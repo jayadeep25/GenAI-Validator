@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Gen AI Chat Window";
+}
+
+<h1 style="text-align:center;">Gen AI Chat Window</h1>
+
+<div style="max-width:600px;margin:auto;">
+    <select id="provider" style="width:100%;padding:10px;margin-bottom:10px;">
+        <option value="openai">ChatGPT</option>
+        <option value="gemini">Gemini</option>
+    </select>
+
+    <div id="chatWindow" style="border:1px solid #ccc;height:300px;overflow:auto;padding:10px;margin-bottom:10px;"></div>
+
+    <input id="prompt" type="text" style="width:80%;padding:10px;" />
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    async function sendMessage() {
+        const prompt = document.getElementById("prompt").value;
+        const provider = document.getElementById("provider").value;
+
+        document.getElementById("chatWindow").innerHTML += `<div><b>You:</b> ${prompt}</div>`;
+
+        const response = await fetch('/Home/Chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ provider, prompt })
+        });
+
+        const data = await response.json();
+
+        document.getElementById("chatWindow").innerHTML += `<div><b>AI:</b> ${data.result}</div>`;
+        document.getElementById("prompt").value = "";
+    }
+</script>
