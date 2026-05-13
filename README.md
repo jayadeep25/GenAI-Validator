@@ -29,16 +29,16 @@ Setup Instructions
 
 1. Clone the repository
 
-git clone https://github.com/jayadeep25/LLM-Validator.git
-cd LLM-Validator.sln
+   git clone https://github.com/jayadeep25/LLM-Validator.git
+   cd LLM-Validator.sln
 
 
 2. Add API Keys
-Update appsettings.json with your keys
+   Update appsettings.json with your keys
 
 
-"LlmSettings": {
-  "OpenAIKey": "YOUR_OPENAI_API_KEY",
-  "GeminiKey": "YOUR_GEMINI_API_KEY"
+   "LlmSettings": {
+     "OpenAIKey": "YOUR_OPENAI_API_KEY",
+      "GeminiKey": "YOUR_GEMINI_API_KEY"
 
 3. Run the application
